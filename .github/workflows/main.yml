@@ -16,14 +16,13 @@ jobs:
       - run: CI=false npm run build
       - name: Build
         run: |
-          git checkout --orphan develop-build
           rm .gitignore
-          git reset
           git add build
-          git remote set-url origin https://hdduy97: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@github.com/hdduy97/test123.git
-          tail .git/config
           git status
           git config user.name "Duy Huynh"
           git config user.email "hdduy97@gmail.com"
           git commit -m "build"
-          git push origin develop-build
+      - name: Push changes
+        with:
+          github_token: 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
+          branch: develop-build
