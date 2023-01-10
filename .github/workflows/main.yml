@@ -19,5 +19,7 @@ jobs:
           git checkout --orphan develop-build
           rm .gitignore
           git add build
+          git config user.name "Duy Huynh"
+          git config user.email "hdduy97@gmail.com"
           git commit -m "build"
           git push origin develop-build
