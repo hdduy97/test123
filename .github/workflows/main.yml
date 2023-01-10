@@ -1,0 +1,19 @@
+name: CI
+
+on: 
+  push:
+    branches:
+      - develop
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm i
+      - run: CI=false npm run build
+      - name: Configure SSH
+        run: |
+          ls -la build
