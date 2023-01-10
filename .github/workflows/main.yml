@@ -12,6 +12,12 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - run: npm i
+      - run: CI=false npm run build
       - name: Configure SSH
         run: |
-          git status
+          git checkout --orphan develop-build
+          rm .gitignore
+          git add build
+          git commit -m "build"
+          git push origin develop-build
