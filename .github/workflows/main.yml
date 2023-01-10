@@ -14,7 +14,7 @@ jobs:
           node-version: '16'
       - run: npm i
       - run: CI=false npm run build
-      - name: Build
+      - name: build
         run: |
           git checkout --orphan develop-build
           rm .gitignore
