@@ -14,6 +14,17 @@ jobs:
           node-version: '16'
       - run: npm i
       - run: CI=false npm run build
+      - name: Delete develop-build
+        run: git push origin --delete develop-build
       - name: Build
         run: |
-          git push origin --delete develop-build
+          git checkout --orphan develop-build
+          rm .gitignore
+          git reset
+          git add build
+          tail .git/config
+          git status
+          git config user.name "Duy Huynh"
+          git config user.email "hdduy97@gmail.com"
+          git commit -m "build"
+          git push origin develop-build
