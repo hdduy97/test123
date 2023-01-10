@@ -23,6 +23,7 @@ jobs:
           git config user.email "hdduy97@gmail.com"
           git commit -m "build"
       - name: Push changes
+        uses: ad-m/github-push-action@master
         with:
           github_token: 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
           branch: develop-build
