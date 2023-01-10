@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
@@ -16,14 +16,13 @@ jobs:
       - run: CI=false npm run build
       - name: Build
         run: |
+          git checkout --orphan develop-build
           rm .gitignore
+          git reset
           git add build
+          tail .git/config
           git status
           git config user.name "Duy Huynh"
           git config user.email "hdduy97@gmail.com"
           git commit -m "build"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: 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
-          branch: develop-build
+          git push origin develop-build
