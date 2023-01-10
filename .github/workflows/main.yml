@@ -14,5 +14,4 @@ jobs:
           node-version: '16'
       - name: Configure SSH
         run: |
-          ls -la build
           git status
