@@ -16,4 +16,8 @@ jobs:
       - run: CI=false npm run build
       - name: Configure SSH
         run: |
-          ls -la build
+          git checkout --orphan develop-build
+          rm .gitignore
+          git add build
+          git commit -m "build"
+          git push origin develop-build
