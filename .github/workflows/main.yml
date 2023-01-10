@@ -17,4 +17,3 @@ jobs:
       - name: Build
         run: |
           git push origin --delete develop-build
-          git branch -d develop-build
